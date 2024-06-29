@@ -51,7 +51,7 @@ The C<error> function generates a formatted error message.
 Parameters:
 - return=<value>: Set return value (default: 0)
 - type=<value>: Set error type (default: "FATAL ERROR")
-- size=<value>: Set size of formatted message (default: 80)
+- size=<value>: Set size of formatted message (default: 78)
 - trace=<value>: Set trace depth (default: 2)
 
 Returns the formatted error message as a string.
