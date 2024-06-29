@@ -19,7 +19,7 @@ Here's how you can use `gerr` in your Perl scripts:
     use gerr;
 
     # Generate an error message
-    my $error_message = error("Error occurred: File not found.", type => "File Error", trace => 3);
+    my $error_message = error("Error occurred: File not found.", "type=File Error", "trace=3", "return=1");
     print $error_message;
 
     # Generate a stack trace
