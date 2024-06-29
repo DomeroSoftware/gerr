@@ -41,7 +41,6 @@ Parameters:
     - `type=<value>`: Set error type (default: "FATAL ERROR").
     - `size=<value>`: Set size of formatted message (default: 78).
     - `trace=<value>`: Set trace depth (default: 2).
-    - `noterm=<value>`: Set noterm value (default: 0).
 
 Returns the formatted error message as a string.
 
