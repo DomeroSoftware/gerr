@@ -37,7 +37,6 @@ Generates a formatted error message.
 Parameters:
     - `@messages`: Messages to be included in the error message.
     - `return=<value>`: Set return value (default: 0).
-    - `reset=<value>`: Set reset value (default: 0).
     - `type=<value>`: Set error type (default: "FATAL ERROR").
     - `size=<value>`: Set size of formatted message (default: 78).
     - `trace=<value>`: Set trace depth (default: 2).
