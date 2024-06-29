@@ -169,11 +169,11 @@ sub trace {
 
     if (@out) {
         for my $i (0 .. $#out) {
-            my $dept = "# " . (" " x $i) . ($i > 0 ? "╰[" : "┈[");
+            my $dept = "# " . (" " x $i) . ($i > 0 ? "`[" : "-[");
             my ($ln, $pk, $cl, $ev) = @{$out[$i]};
             my $ll = (60 - length($dept . $cl));
             my $rr = (6 - length($ln));
-            $out[$i] = "$dept $cl" . (" " x ($ll > 0 ? $ll : 0)) . "Line" . (" " x ($rr > 0 ? $rr : 0)) . "$ln : $pk" . ($ev ? "\n$ev" : "");
+            $out[$i] = "$dept $cl" . (" " x ($ll > 0 ? $ll : 0)) . " at line: " . (" " x ($rr > 0 ? $rr : 0)) . "$ln : $pk" . ($ev ? "\n$ev" : "");
         }
     }
 
