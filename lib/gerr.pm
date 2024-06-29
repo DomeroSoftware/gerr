@@ -15,7 +15,7 @@ This module provides functions for generating formatted error messages and stack
 
 =head1 VERSION
 
-Version 1.13
+Version 1.1.2
 
 =cut
 
@@ -33,7 +33,7 @@ use strict;
 use warnings;
 use Exporter;
 
-our $VERSION = '1.13';
+our $VERSION = '1.1.2';
 our @ISA = qw(Exporter);
 our @EXPORT = qw(error);
 our @EXPORT_OK = qw(trace);
