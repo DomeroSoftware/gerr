@@ -50,11 +50,9 @@ The C<error> function generates a formatted error message.
 
 Parameters:
 - return=<value>: Set return value (default: 0)
-- reset=<value>: Set reset value (default: 0)
 - type=<value>: Set error type (default: "FATAL ERROR")
 - size=<value>: Set size of formatted message (default: 80)
 - trace=<value>: Set trace depth (default: 2)
-- noterm=<value>: Set noterm value (default: 0)
 
 Returns the formatted error message as a string.
 
@@ -67,7 +65,6 @@ sub error {
     my $type = "FATAL ERROR";
     my $size = 80 - 2;
     my $trace = 2;
-    my $noterm = 0;
     my @lines;
 
     while (scalar(@msg)) {
@@ -76,10 +73,6 @@ sub error {
         }
         elsif ($msg[0] =~ /^return=(.+)$/gs) { 
             $return = $1; 
-            shift(@msg);
-        }
-        elsif ($msg[0] =~ /^reset=(.+)$/gs) { 
-            $reset = $1; 
             shift(@msg);
         }
         elsif ($msg[0] =~ /^type=(.+)$/gs) { 
@@ -92,10 +85,6 @@ sub error {
         }
         elsif ($msg[0] =~ /^trace=(.+)$/gs) { 
             $trace = $1; 
-            shift(@msg);
-        }
-        elsif ($msg[0] =~ /^noterm=(.+)$/gs) { 
-            $noterm = $1; 
             shift(@msg);
         }
         else { 
