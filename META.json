@@ -1,0 +1,56 @@
+{
+    "name": "gerr",
+    "version": "1.13",
+    "abstract": "Eureka Error System",
+    "author": [
+        "Domero, Groningen, NL"
+    ],
+    "license": "perl",
+    "release_status": "stable",
+    "prereqs": {
+        "runtime": {
+            "requires": {
+                "perl": "5.008",
+                "strict": "0",
+                "warnings": "0",
+                "Exporter": "0"
+            }
+        },
+        "test": {
+            "requires": {
+                "Test::More": "0.88"
+            }
+        }
+    },
+    "provides": {
+        "gerr": {
+            "file": "lib/gerr.pm",
+            "version": "1.13"
+        }
+    },
+    "resources": {
+        "repository": {
+            "type": "git",
+            "url": "git://github.com/DomeroSoftware/gerr.git",
+            "web": "https://github.com/DomeroSoftware/gerr"
+        },
+        "bugtracker": {
+            "web": "https://github.com/DomeroSoftware/gerr/issues"
+        },
+        "license": [
+            "http://dev.perl.org/licenses/"
+        ]
+    },
+    "no_index": {
+        "directory": [
+            "t",
+            "examples",
+            "inc"
+        ]
+    },
+    "generated_by": "Module::Build version 0.42",
+    "meta-spec": {
+        "version": "2",
+        "url": "http://search.cpan.org/perldoc?CPAN::Meta::Spec"
+    }
+}

@@ -1,0 +1,86 @@
+
+# gerr - Eureka Error System v1.1.2
+
+## Description
+
+`gerr` is a Perl module designed for generating formatted error messages and stack traces within Perl applications. It provides functionality to handle and display errors effectively.
+
+## Installation
+
+To install `gerr`, simply download the source code and include it in your Perl project:
+
+1. Download `gerr.pm` to your project directory.
+2. Include `gerr.pm` in your Perl script using `use gerr;`.
+
+## Usage
+
+Here's how you can use `gerr` in your Perl scripts:
+
+    use gerr;
+
+    # Generate an error message
+    my $error_message = error("Error occurred: File not found.", type => "File Error", trace => 3);
+    print $error_message;
+
+    # Generate a stack trace
+    my $stack_trace = trace(5);
+    print $stack_trace;
+
+### Functions
+
+#### error
+
+    my $error_message = error("Error message", options...);
+
+Generates a formatted error message.
+
+Parameters:
+    - `@messages`: Messages to be included in the error message.
+    - `return=<value>`: Set return value (default: 0).
+    - `reset=<value>`: Set reset value (default: 0).
+    - `type=<value>`: Set error type (default: "FATAL ERROR").
+    - `size=<value>`: Set size of formatted message (default: 78).
+    - `trace=<value>`: Set trace depth (default: 2).
+    - `noterm=<value>`: Set noterm value (default: 0).
+
+Returns the formatted error message as a string.
+
+#### trace
+
+    my $stack_trace = trace($depth);
+
+Generates a stack trace with the specified depth.
+
+Parameters:
+    - `$depth`: Depth of the stack trace (default: 1).
+
+Returns the formatted stack trace as a string.
+
+## Examples
+
+    use gerr;
+
+    # Example of generating an error message
+    my $error_message = error("Error: File not found.", type => "File Error", trace => 3);
+    print $error_message;
+
+    # Example of generating a stack trace
+    my $stack_trace = trace(5);
+    print $stack_trace;
+
+## Contributing
+
+Contributions are welcome! If you find any issues or have suggestions, please submit them to the [GitHub issue tracker](https://github.com/domerosoftware/Perl/issues).
+
+## License
+
+This module is licensed under the MIT License. See the LICENSE file for details.
+
+## Author
+
+Domero Software
+Email: domerosoftware@gmail.com
+
+## Version
+
+Version 1.13
