@@ -70,7 +70,7 @@ sub error {
     my $noterm = 0;
     my @lines;
 
-    while (@msg) {
+    while (scalar(@msg)) {
         if (!defined $msg[0]) { 
             shift(@msg);
         }
