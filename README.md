@@ -62,11 +62,11 @@ To use the `gerr` module in your Perl script, include it using one of the follow
 ### Standard Usage
 
    ```perl
-   use gerr;
+   use gerr qw(error Warn Die);
 
    # Output the error message
-   warn error("Something went wrong", "type=Warning", "trace=3", "return=1");
-   die error("Something went REALY wrong", "type=Fatal Error", "trace=3", "return=1");
+   Warn( error("Something went wrong", "type=Warning", "trace=3", "return=1") );
+   Die( error("Something went REALY wrong", "type=Fatal Error", "trace=3", "return=1") );
    ```
 
 ### Using `:control` to Override `warn` and `die`
