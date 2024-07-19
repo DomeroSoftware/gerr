@@ -75,10 +75,10 @@ To use the `gerr` module in your Perl script, include it using one of the follow
    use gerr qw(:control);
 
    # Generate a warning
-   warn error("Something went wrong", "type=Warning", "trace=3", "return=1");
+   warn "Something went wrong";
 
    # Generate a fatal error
-   die error("Something went REALY wrong", "type=Fatal Error", "trace=3", "return=1");
+   die "Something went REALY wrong";
    ```
 
 ## Functions
