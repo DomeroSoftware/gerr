@@ -64,12 +64,9 @@ To use the `gerr` module in your Perl script, include it using one of the follow
    ```perl
    use gerr;
 
-   # Generate a formatted error message
-   my $error_message = error("Something went wrong", "type=Error", "trace=3", "return=1");
-
    # Output the error message
-   warn "This is a warning message.";
-   die "This is a fatal error message.";
+   warn error("Something went wrong", "type=Warning", "trace=3", "return=1");
+   die error("Something went REALY wrong", "type=Fatal Error", "trace=3", "return=1");
    ```
 
 ### Using `:control` to Override `warn` and `die`
@@ -78,10 +75,10 @@ To use the `gerr` module in your Perl script, include it using one of the follow
    use gerr qw(:control);
 
    # Generate a warning
-   warn "This is a warning message.";
+   warn error("Something went wrong", "type=Warning", "trace=3", "return=1");
 
    # Generate a fatal error
-   die "This is a fatal error message.";
+   die error("Something went REALY wrong", "type=Fatal Error", "trace=3", "return=1");
    ```
 
 ## Functions
