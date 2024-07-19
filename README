@@ -1,84 +1,135 @@
 
-# gerr - Eureka Error System v1.1.2
+# gerr - Eureka Error System v1.1.4
 
-## Description
+## Overview
 
-`gerr` is a Perl module designed for generating formatted error messages and stack traces within Perl applications. It provides functionality to handle and display errors effectively.
+`gerr` is a Perl module designed to enhance error and debugging management in Perl scripts by providing custom error messages, stack traces, and handlers for warnings and fatal errors. It offers a consistent approach to handle errors and warnings, making debugging more manageable and informative.
+
+## Features
+
+- **Custom Error Messages**: Format error messages with additional context.
+- **Stack Traces**: Capture and format stack traces for better debugging.
+- **Custom Warning and Fatal Error Handlers**: Replace default Perl handlers for warnings and fatal errors with custom implementations.
+- **Flexible Configuration**: Customize error types, message sizes, and trace depths.
 
 ## Installation
 
-To install `gerr`, simply download the source code and include it in your Perl project:
+You can install `gerr` from CPAN or from the GitHub repository.
 
-1. Download `gerr.pm` to your project directory.
-2. Include `gerr.pm` in your Perl script using `use gerr;`.
+### Install from CPAN
+
+You can install `gerr` from CPAN using the following command:
+
+```sh
+cpanm gerr
+```
+
+Alternatively, you can use `cpan` directly:
+
+```sh
+cpan gerr
+```
+
+### Install from GitHub
+
+To install `gerr` from GitHub, follow these steps:
+
+1. Clone the repository:
+
+    ```sh
+    git clone https://github.com/DomeroSoftware/gerr.git
+    ```
+
+2. Change directory to the cloned repository:
+
+    ```sh
+    cd gerr
+    ```
+
+3. Build and install the module:
+
+    ```sh
+    perl Makefile.PL
+    make
+    make test
+    make install
+    ```
 
 ## Usage
 
-Here's how you can use `gerr` in your Perl scripts:
+To use the `gerr` module in your Perl script, include it using one of the following methods:
 
-    use gerr;
+### Standard Usage
 
-    # Generate an error message
-    my $error_message = error("Error occurred: File not found.", "type=File Error", "trace=3", "return=1");
-    print $error_message;
+   ```perl
+   use gerr;
 
-    # Generate a stack trace
-    my $stack_trace = trace(5);
-    print $stack_trace;
+   # Generate a formatted error message
+   my $error_message = error("Something went wrong", "type=Error", "trace=3", "return=1");
 
-### Functions
+   # Output the error message
+   warn "This is a warning message.";
+   die "This is a fatal error message.";
+   ```
 
-#### error
+### Using `:control` to Override `warn` and `die`
 
-    my $error_message = error("Error message", options...);
+   ```perl
+   use gerr qw(:control);
 
-Generates a formatted error message.
+   # Generate a warning
+   warn "This is a warning message.";
 
-Parameters:
-    - `@messages`: Messages to be included in the error message.
-    - `return=<value>`: Set return value (default: 0).
-    - `type=<value>`: Set error type (default: "FATAL ERROR").
-    - `size=<value>`: Set size of formatted message (default: 78).
-    - `trace=<value>`: Set trace depth (default: 2).
+   # Generate a fatal error
+   die "This is a fatal error message.";
+   ```
 
-Returns the formatted error message as a string.
+## Functions
 
-#### trace
+### `error(@messages)`
 
-    my $stack_trace = trace($depth);
+Generates a formatted error message. Options include `return`, `type`, `size`, and `trace`.
 
-Generates a stack trace with the specified depth.
+### `trace($depth)`
 
-Parameters:
-    - `$depth`: Depth of the stack trace (default: 1).
+Generates a stack trace with the given depth. The default depth is 1.
 
-Returns the formatted stack trace as a string.
+### `Warn($message)`
 
-## Examples
+Custom implementation for warnings. Formats the message and invokes the warning signal handler if defined.
 
-    use gerr;
+### `Die($message)`
 
-    # Example of generating an error message
-    my $error_message = error("Error: File not found.", type => "File Error", trace => 3);
-    print $error_message;
+Custom implementation for fatal errors. Formats the message and invokes the die signal handler if defined, and exits the program if not in an eval block.
 
-    # Example of generating a stack trace
-    my $stack_trace = trace(5);
-    print $stack_trace;
+## Custom Error Handling
+
+### `Warn`
+
+Formats the warning message, includes the call location, and either invokes a custom warning handler if defined or prints the message to STDERR.
+
+### `Die`
+
+Formats the fatal error message, includes the call location, and either invokes a custom die handler if defined or prints the message to STDERR and exits the program if not in an eval block.
+
+## Export
+
+By default, only the `error` function is exported. To use custom warning and die handlers, use the `:control` tag.
+
+## Advanced Usage
+
+The `:control` tag enables overriding Perl's built-in `warn` and `die` functions with `Warn` and `Die` methods from `gerr`. This ensures consistent formatting for warnings and errors across your application, even when other modules or packages are used.
 
 ## Contributing
 
-Contributions are welcome! If you find any issues or have suggestions, please submit them to the [GitHub issue tracker](https://github.com/domerosoftware/gerr/issues).
+If you would like to contribute to `gerr`, please visit the [GitHub repository](https://github.com/DomeroSoftware/gerr) and submit issues, suggestions, or pull requests.
 
 ## License
 
-This module is licensed under the MIT License. See the LICENSE file for details.
+Copyright (C) 2020 Domero, Groningen, NL. All rights reserved.
 
-## Author
+This module is released under the same terms as Perl itself.
 
-Domero Software
-Email: domerosoftware@gmail.com
+## Contact
 
-## Version
-
-Version 1.13
+For further information, updates, or to report issues, please visit the [GitHub repository](https://github.com/DomeroSoftware/gerr).
