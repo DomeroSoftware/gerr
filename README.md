@@ -1,5 +1,5 @@
 
-# gerr - Eureka Error System v1.1.4
+# gerr - Eureka Error System v1.1.7
 
 ## Overview
 
@@ -123,7 +123,7 @@ If you would like to contribute to `gerr`, please visit the [GitHub repository](
 
 ## License
 
-Copyright (C) 2020 Domero, Groningen, NL. All rights reserved.
+Copyright (C) 2020 Domero Software. All rights reserved.
 
 This module is released under the same terms as Perl itself.
 
