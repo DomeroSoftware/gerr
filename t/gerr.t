@@ -18,8 +18,8 @@ BEGIN {
 
 # Test trace function
 {
-    my $stack_trace = trace(3);
-    like($stack_trace, qr/trace at/, "trace() function test");
+    my $stack_trace = gerr::trace(1);
+    like($stack_trace, qr/Trace Stack/, "trace() function test");
 }
 
 done_testing();
