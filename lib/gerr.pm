@@ -66,7 +66,7 @@ sub error {
     my $ls = ($size >> 1) - ($tsize >> 1);
     my $rs = $size - ($size >> 1) - ($tsize >> 1) - 1;
     my $tit = " " . ("#" x $ls) . $type . ("#" x $rs) . "\n";
-    my $str = "\n\n";
+    my $str = "\n$tit\n";
 
     foreach my $line (@lines) {
         while (length($line) > 0) {
@@ -75,13 +75,13 @@ sub error {
                 $str .= substr($line, 0, $size - 6) . "..." . " #\n";
                 $line = "..." . substr($line, $size - 6);
             } else {
-                $str .= $line . ((" " x ($size - length($line) - 3)) > 0 ? (" " x ($size - length($line) - 3)) : '') . " #\n";
+                $str .= $line . (length(" " x ($size - length($line) - 3)) > 0 ? (" " x ($size - length($line) - 3)) : '') . " #\n";
                 $line = "";
             }
         }
     }
 
-    $str .= trace($trace); # Include stack trace if enabled
+    $str .= trace($trace,$size); # Include stack trace if enabled
 
      # Only exit if not in an eval block
     if (!$return && !$^S) {
@@ -98,6 +98,7 @@ sub error {
 
 sub trace {
     my $depth = $_[0] || 1;
+    my $size = $_[1] || 80-2;
     my @out = ();
 
     while ($depth > 0 && $depth < 20) {
@@ -123,7 +124,12 @@ sub trace {
         }
     }
 
-    return join("\n", @out) . "\n";
+    my $type = " Trace Stack ";
+    my $tsize = length("$type");
+    my $ls = ($size >> 1) - ($tsize >> 1);
+    my $rs = $size - ($size >> 1) - ($tsize >> 1) - 1;
+    my $tit = " " . ("#" x $ls) . $type . ("#" x $rs) . "\n";
+    return "$tit\n".join("\n", @out)." " . ("#" x $size) . "\n";
 }
 
 ################################################################################
