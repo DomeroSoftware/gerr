@@ -3,7 +3,7 @@
 
   ############################################################################
   #                                                                          #
-  #   Eureka Error System v1.1.4                                             #
+  #   Eureka Error System v1.1.7                                             #
   #   (C) 2020 OnEhIppY, Domero                                              #
   #   ALL RIGHTS RESERVED                                                    #
   #                                                                          #
@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use Exporter;
 
-our $VERSION = '1.1.4';
+our $VERSION = '1.1.7';
 our @ISA = qw(Exporter);
 our @EXPORT = qw(error Warn Die);
 our @EXPORT_OK = qw(trace);
@@ -129,7 +129,7 @@ sub trace {
     my $ls = ($size >> 1) - ($tsize >> 1);
     my $rs = $size - ($size >> 1) - ($tsize >> 1) - 1;
     my $tit = " " . ("#" x $ls) . $type . ("#" x $rs) . "\n";
-    return "$tit\n".join("\n", @out)." " . ("#" x $size) . "\n";
+    return "$tit\n".join("\n", @out)."\n" . ("#" x $size) . "\n";
 }
 
 ################################################################################
@@ -145,6 +145,7 @@ sub Warn {
         binmode STDERR, ":encoding(UTF-8)"; # Set UTF-8 encoding for STDERR
         print STDERR $formatted_message;
     }
+    return $formatted_message;
 }
 
 ################################################################################
@@ -161,6 +162,7 @@ sub Die {
         print STDERR $formatted_message;
     }
     exit 1 unless $^S; # Only exit if not in an eval block
+    return $formatted_message;
 }
 
 ################################################################################
