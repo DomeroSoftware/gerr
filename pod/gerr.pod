@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-gerr - Eureka Error System v1.1.4
+gerr - Eureka Error System v1.1.7
 
 =head1 SYNOPSIS
 
@@ -21,7 +21,7 @@ The module includes functionalities to format error messages, capture and format
 
 =head1 VERSION
 
-Version 1.1.4
+Version 1.1.7
 
 =head1 USAGE
 
