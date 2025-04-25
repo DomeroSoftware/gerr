@@ -134,7 +134,7 @@ The `Die` function formats the fatal error message, includes the call location, 
 
 =head1 EXPORT
 
-By default, only the `error` function is exported. If you want to use custom warning and die handlers, use the `:control` tag.
+By default, only the `error`, `Die` and `Warn` functions are exported. If you want to use custom warning and die handlers, use the `:control` tag.
 
 =head1 ADVANCED USAGE
 
